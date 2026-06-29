@@ -1,0 +1,39 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "woo-evidence-agent",
+    "kind": "process",
+    "type": "agent",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "e98de259-dbb7-42d7-872c-bb78f3033ec1",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "woo-evidence-agent"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Agent",
+      "name": "woo-evidence-agent",
+      "package": {
+        "key": "3b12b22d-837a-4a24-9027-0a7629272604"
+      },
+      "packageName": "chargeback-solution.agent.woo-evidence-agent",
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "5ec8735e-3090-475a-820b-2c011bdffb55",
+    "files": []
+  }
+}

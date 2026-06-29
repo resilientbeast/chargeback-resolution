@@ -1,0 +1,83 @@
+{
+  "version": "1.1.0",
+  "settings": {
+    "model": "gpt-4o-2024-11-20",
+    "maxTokens": 16384,
+    "temperature": 0,
+    "engine": "basic-v2",
+    "maxIterations": 25,
+    "mode": "standard"
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "woo_order_json": {
+        "type": "string",
+        "description": "WooCommerce order JSON"
+      },
+      "stripe_dispute_json": {
+        "type": "string",
+        "description": "Stripe dispute JSON"
+      }
+    },
+    "required": [
+      "woo_order_json",
+      "stripe_dispute_json"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "evidence_quality_score": {
+        "type": "number",
+        "description": "Score from 1-100 evaluating the evidence strength"
+      },
+      "evidence_summary": {
+        "type": "string",
+        "description": "A summary of the evidence findings"
+      }
+    }
+  },
+  "metadata": {
+    "storageVersion": "50.0.0",
+    "isConversational": false,
+    "showProjectCreationExperience": false,
+    "targetRuntime": "pythonAgent"
+  },
+  "type": "lowCode",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a Chargeback Evidence Quality Scorer.\nYour goal is to score the quality of the evidence available for a chargeback dispute on a scale of 1-100.\nEvaluate the WooCommerce order details (shipping, billing, items) against the Stripe dispute details.\nOutput a JSON object with 'evidence_quality_score' and 'evidence_summary'.",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "You are a Chargeback Evidence Quality Scorer.\nYour goal is to score the quality of the evidence available for a chargeback dispute on a scale of 1-100.\nEvaluate the WooCommerce order details (shipping, billing, items) against the Stripe dispute details.\nOutput a JSON object with 'evidence_quality_score' and 'evidence_summary'."
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "WooCommerce Order: {{input.woo_order_json}}\nStripe Dispute: {{input.stripe_dispute_json}}",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "WooCommerce Order: "
+        },
+        {
+          "type": "variable",
+          "rawString": "input.woo_order_json"
+        },
+        {
+          "type": "simpleText",
+          "rawString": "\nStripe Dispute: "
+        },
+        {
+          "type": "variable",
+          "rawString": "input.stripe_dispute_json"
+        }
+      ]
+    }
+  ],
+  "projectId": "8e0db52b-9052-4826-af46-ca1eac901e70"
+}

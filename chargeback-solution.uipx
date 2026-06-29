@@ -1,0 +1,42 @@
+{
+  "DocVersion": "1.0.0",
+  "StudioMinVersion": "2025.10.0",
+  "SolutionId": "aedd15fc-e957-40a8-df2a-08ded445e2d2",
+  "Projects": [
+    {
+      "Type": "CaseManagement",
+      "ProjectRelativePath": "chargeback-resolution/project.uiproj",
+      "Id": "69c52a76-f721-4b37-b563-16e699d9ddb4"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "woo-evidence-agent/project.uiproj",
+      "Id": "e98de259-dbb7-42d7-872c-bb78f3033ec1"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "stripe-evidence-agent/project.uiproj",
+      "Id": "e72f5b17-96ab-421d-90c2-3bbecbd5d917"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "scorer-agent/project.uiproj",
+      "Id": "cc3f6c12-1778-413e-8595-9e59d612956b"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "strategy-agent/project.uiproj",
+      "Id": "d9744585-e7e5-4e25-99c5-1b4fe4a1f518"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "drafter-agent/project.uiproj",
+      "Id": "cba06bd8-4478-4ce9-a652-239e22e4879a"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "probability-agent/project.uiproj",
+      "Id": "5ecc7484-b814-41b7-9299-eed1a4ee0ab7"
+    }
+  ]
+}

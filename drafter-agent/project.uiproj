@@ -1,0 +1,6 @@
+{
+  "ProjectType": "Agent",
+  "Name": "drafter-agent",
+  "Description": "Add your description here",
+  "MainFile": null
+}

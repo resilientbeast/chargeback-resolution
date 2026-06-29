@@ -1,0 +1,38 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "chargeback-resolution",
+    "kind": "process",
+    "type": "caseManagement",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "69c52a76-f721-4b37-b563-16e699d9ddb4",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "chargeback-resolution"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "CaseManagement",
+      "name": "chargeback-resolution",
+      "package": {
+        "key": "e62561a1-92ba-43bd-80e2-5c60e2a3d406"
+      },
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "050b5bee-7ba5-41bf-a21c-82ecaaa0bcc1",
+    "files": []
+  }
+}

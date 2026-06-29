@@ -1,0 +1,23 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "scorer-agent",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "cc3f6c12-1778-413e-8595-9e59d612956b",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "scorer-agent"
+    },
+    "locks": [],
+    "key": "5d242f0c-b944-444d-a10a-a10dc65d4b89",
+    "files": []
+  }
+}

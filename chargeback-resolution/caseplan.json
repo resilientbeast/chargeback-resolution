@@ -1,0 +1,1041 @@
+{
+    "id": "case-ChgBckRes1",
+    "version": "23.0.0",
+    "name": "chargeback-resolution",
+    "description": "Automated chargeback dispute resolution pipeline \u2014 intake through outcome monitoring",
+    "metadata": {
+        "caseIdentifier": "CHRG",
+        "caseIdentifierType": "constant",
+        "caseAppEnabled": true,
+        "publishVersion": 2,
+        "caseUnifiedSchemaEnabled": true,
+        "caseDirectlyPassTaskOutputs": true,
+        "intsvcActivityConfig": "v2",
+        "slaRules": [
+            {
+                "expression": "=js:true",
+                "count": 30,
+                "unit": "d"
+            }
+        ],
+        "caseExitRules": [
+            {
+                "id": "Condition_CaseEx",
+                "displayName": "Complete Rule 1",
+                "marksCaseComplete": true,
+                "rules": [
+                    [
+                        {
+                            "id": "Rule_CaseExR",
+                            "rule": "required-stages-completed"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "bindings": [
+        {
+            "id": "bEvWcName",
+            "name": "name",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.woo-evidence-agent",
+            "default": "woo-evidence-agent",
+            "propertyAttribute": "name"
+        },
+        {
+            "id": "bEvWcFldr",
+            "name": "folderPath",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.woo-evidence-agent",
+            "default": "Shared/ChargebackV5",
+            "propertyAttribute": "folderPath"
+        },
+        {
+            "id": "bEvStName",
+            "name": "name",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.stripe-evidence-agent",
+            "default": "stripe-evidence-agent",
+            "propertyAttribute": "name"
+        },
+        {
+            "id": "bEvStFldr",
+            "name": "folderPath",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.stripe-evidence-agent",
+            "default": "Shared/ChargebackV5",
+            "propertyAttribute": "folderPath"
+        },
+        {
+            "id": "bEvScName",
+            "name": "name",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.scorer-agent",
+            "default": "scorer-agent",
+            "propertyAttribute": "name"
+        },
+        {
+            "id": "bEvScFldr",
+            "name": "folderPath",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.scorer-agent",
+            "default": "Shared/ChargebackV5",
+            "propertyAttribute": "folderPath"
+        },
+        {
+            "id": "bStName",
+            "name": "name",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.strategy-agent",
+            "default": "strategy-agent",
+            "propertyAttribute": "name"
+        },
+        {
+            "id": "bStFldr",
+            "name": "folderPath",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.strategy-agent",
+            "default": "Shared/ChargebackV5",
+            "propertyAttribute": "folderPath"
+        },
+        {
+            "id": "bPrName",
+            "name": "name",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.probability-agent",
+            "default": "probability-agent",
+            "propertyAttribute": "name"
+        },
+        {
+            "id": "bPrFldr",
+            "name": "folderPath",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.probability-agent",
+            "default": "Shared/ChargebackV5",
+            "propertyAttribute": "folderPath"
+        },
+        {
+            "id": "bDrName",
+            "name": "name",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.drafter-agent",
+            "default": "drafter-agent",
+            "propertyAttribute": "name"
+        },
+        {
+            "id": "bDrFldr",
+            "name": "folderPath",
+            "type": "string",
+            "resource": "process",
+            "resourceSubType": "Agent",
+            "resourceKey": "Shared/ChargebackV5.drafter-agent",
+            "default": "Shared/ChargebackV5",
+            "propertyAttribute": "folderPath"
+        }
+    ],
+    "variables": {
+        "inputs": [],
+        "outputs": [],
+        "inputOutputs": [
+            {
+                "id": "disputeId",
+                "name": "disputeId",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            },
+            {
+                "id": "amount",
+                "name": "amount",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            },
+            {
+                "id": "currency",
+                "name": "currency",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": "USD"
+            },
+            {
+                "id": "reasonCode",
+                "name": "reasonCode",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            },
+            {
+                "id": "wooOrderId",
+                "name": "wooOrderId",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            },
+            {
+                "id": "stripeChargeId",
+                "name": "stripeChargeId",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            },
+            {
+                "id": "wooOrderDetails",
+                "name": "wooOrderDetails",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            },
+            {
+                "id": "stripeDisputeDetails",
+                "name": "stripeDisputeDetails",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            },
+            {
+                "id": "evidenceQualityScore",
+                "name": "evidenceQualityScore",
+                "type": "number",
+                "elementId": "root",
+                "custom": true,
+                "default": 0
+            },
+            {
+                "id": "evidenceSummary",
+                "name": "evidenceSummary",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            },
+            {
+                "id": "strategyRecommendation",
+                "name": "strategyRecommendation",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            },
+            {
+                "id": "confidenceLevel",
+                "name": "confidenceLevel",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            },
+            {
+                "id": "requiresHumanReview",
+                "name": "requiresHumanReview",
+                "type": "boolean",
+                "elementId": "root",
+                "custom": true,
+                "default": false
+            },
+            {
+                "id": "winProbability",
+                "name": "winProbability",
+                "type": "number",
+                "elementId": "root",
+                "custom": true,
+                "default": 0
+            },
+            {
+                "id": "rebuttalDraft",
+                "name": "rebuttalDraft",
+                "type": "string",
+                "elementId": "root",
+                "custom": true,
+                "default": ""
+            }
+        ]
+    },
+    "nodes": [
+        {
+            "id": "trigger_1",
+            "type": "case-management:Trigger",
+            "data": {
+                "label": "Manual Trigger",
+                "description": "Starts the case manually or via API"
+            }
+        },
+        {
+            "id": "Stage_Evid02",
+            "type": "case-management:Stage",
+            "data": {
+                "label": "Evidence Gathering",
+                "description": "Collect transaction records, order data, and supporting documents",
+                "isRequired": true,
+                "parentElement": {
+                    "id": "root",
+                    "type": "case-management:root"
+                },
+                "isInvalidDropTarget": false,
+                "isPendingParent": false,
+                "tasks": [
+                    [
+                        {
+                            "id": "tEvid01Wc",
+                            "elementId": "Stage_Evid02-tEvid01Wc",
+                            "displayName": "Fetch WooCommerce Order",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "Retrieves full order details, line items, shipping, and customer info from WooCommerce REST API",
+                            "data": {
+                                "agentBinding": "bEvWcName",
+                                "folderPathBinding": "bEvWcFldr",
+                                "inputs": [
+                                    {
+                                        "name": "order_id",
+                                        "value": "wooOrderId",
+                                        "type": "variable"
+                                    }
+                                ],
+                                "outputs": [
+                                    {
+                                        "name": "order_data_json",
+                                        "value": "wooOrderDetails",
+                                        "type": "variable"
+                                    }
+                                ]
+                            },
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_eS9lNw",
+                                    "displayName": "Start",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "current-stage-entered",
+                                                "id": "Rule_Oba3U7"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "id": "tEvid02St",
+                            "elementId": "Stage_Evid02-tEvid02St",
+                            "displayName": "Fetch Stripe Evidence",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "Retrieves charge details, payment intent, refund history, and dispute metadata from Stripe API",
+                            "data": {
+                                "agentBinding": "bEvStName",
+                                "folderPathBinding": "bEvStFldr",
+                                "inputs": [
+                                    {
+                                        "name": "charge_id",
+                                        "value": "stripeChargeId",
+                                        "type": "variable"
+                                    }
+                                ],
+                                "outputs": [
+                                    {
+                                        "name": "dispute_data_json",
+                                        "value": "stripeDisputeDetails",
+                                        "type": "variable"
+                                    }
+                                ]
+                            },
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_TlC79Y",
+                                    "displayName": "Start",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "current-stage-entered",
+                                                "id": "Rule_Ue6I1T"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "id": "tEvid03Sc",
+                            "elementId": "Stage_Evid02-tEvid03Sc",
+                            "displayName": "Score Evidence Quality",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "AI agent scores completeness and quality of gathered evidence, flags gaps",
+                            "data": {
+                                "agentBinding": "bEvScName",
+                                "folderPathBinding": "bEvScFldr",
+                                "inputs": [
+                                    {
+                                        "name": "woo_order_json",
+                                        "value": "wooOrderDetails",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "stripe_dispute_json",
+                                        "value": "stripeDisputeDetails",
+                                        "type": "variable"
+                                    }
+                                ],
+                                "outputs": [
+                                    {
+                                        "name": "quality_score",
+                                        "value": "evidenceQualityScore",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "summary",
+                                        "value": "evidenceSummary",
+                                        "type": "variable"
+                                    }
+                                ]
+                            },
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_t03E1",
+                                    "displayName": "After Evidence Fetch",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "selected-tasks-completed",
+                                                "id": "Rule_t03R1",
+                                                "selectedTasksIds": [
+                                                    "tEvid01Wc",
+                                                    "tEvid02St"
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "entryConditions": [
+                    {
+                        "id": "Condition_EvidE1",
+                        "displayName": "Entry Rule 1",
+                        "isInterrupting": false,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_EvidR1",
+                                    "rule": "case-entered"
+                                }
+                            ]
+                        ]
+                    }
+                ],
+                "exitConditions": [
+                    {
+                        "id": "Condition_EvidX1",
+                        "displayName": "Complete Rule 1",
+                        "type": "exit-only",
+                        "marksStageComplete": true,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_EvidXR",
+                                    "rule": "required-tasks-completed"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "Stage_Strat3",
+            "type": "case-management:Stage",
+            "data": {
+                "label": "Strategy",
+                "description": "Determine optimal defense strategy based on reason code and evidence",
+                "isRequired": true,
+                "parentElement": {
+                    "id": "root",
+                    "type": "case-management:root"
+                },
+                "isInvalidDropTarget": false,
+                "isPendingParent": false,
+                "tasks": [
+                    [
+                        {
+                            "id": "tStra01An",
+                            "elementId": "Stage_Strat3-tStra01An",
+                            "displayName": "Analyze Dispute Strategy",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "AI agent analyzes reason code, evidence quality score, and transaction patterns to recommend defense strategy",
+                            "data": {
+                                "agentBinding": "bStName",
+                                "folderPathBinding": "bStFldr",
+                                "inputs": [
+                                    {
+                                        "name": "woo_order_json",
+                                        "value": "wooOrderDetails",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "stripe_dispute_json",
+                                        "value": "stripeDisputeDetails",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "evidence_quality_score",
+                                        "value": "evidenceQualityScore",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "evidence_summary",
+                                        "value": "evidenceSummary",
+                                        "type": "variable"
+                                    }
+                                ],
+                                "outputs": [
+                                    {
+                                        "name": "strategy_recommendation",
+                                        "value": "strategyRecommendation",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "confidence_level",
+                                        "value": "confidenceLevel",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "requires_human_review",
+                                        "value": "requiresHumanReview",
+                                        "type": "variable"
+                                    }
+                                ]
+                            },
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_q3WJVm",
+                                    "displayName": "Start",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "current-stage-entered",
+                                                "id": "Rule_OVMFs5"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "id": "tStra02Wn",
+                            "elementId": "Stage_Strat3-tStra02Wn",
+                            "displayName": "Calculate Win Probability",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "Estimates win probability based on reason code, evidence strength, and historical patterns",
+                            "data": {},
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_t04E1",
+                                    "displayName": "After Strategy Analysis",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "selected-tasks-completed",
+                                                "id": "Rule_t04R1",
+                                                "selectedTasksIds": [
+                                                    "tStra01An"
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "entryConditions": [
+                    {
+                        "id": "Condition_StraE1",
+                        "displayName": "Entry Rule 1",
+                        "isInterrupting": false,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_StraR1",
+                                    "rule": "selected-stage-completed",
+                                    "selectedStageId": "Stage_Evid02"
+                                }
+                            ]
+                        ]
+                    }
+                ],
+                "exitConditions": [
+                    {
+                        "id": "Condition_StraX1",
+                        "displayName": "Complete Rule 1",
+                        "type": "exit-only",
+                        "marksStageComplete": true,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_StraXR",
+                                    "rule": "required-tasks-completed"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "Stage_Resp04",
+            "type": "case-management:Stage",
+            "data": {
+                "label": "Response Drafting",
+                "description": "Draft formal rebuttal letter and compile evidence package",
+                "isRequired": true,
+                "parentElement": {
+                    "id": "root",
+                    "type": "case-management:root"
+                },
+                "isInvalidDropTarget": false,
+                "isPendingParent": false,
+                "tasks": [
+                    [
+                        {
+                            "id": "tResp01Dr",
+                            "elementId": "Stage_Resp04-tResp01Dr",
+                            "displayName": "Draft Rebuttal Letter",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "AI agent drafts a professional rebuttal letter using evidence, strategy, and reason-code-specific templates",
+                            "data": {
+                                "agentBinding": "bDrName",
+                                "folderPathBinding": "bDrFldr",
+                                "inputs": [
+                                    {
+                                        "name": "woo_order_json",
+                                        "value": "wooOrderDetails",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "stripe_dispute_json",
+                                        "value": "stripeDisputeDetails",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "evidence_quality_score",
+                                        "value": "evidenceQualityScore",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "evidence_summary",
+                                        "value": "evidenceSummary",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "strategy_recommendation",
+                                        "value": "strategyRecommendation",
+                                        "type": "variable"
+                                    }
+                                ],
+                                "outputs": [
+                                    {
+                                        "name": "rebuttal_draft",
+                                        "value": "rebuttalDraft",
+                                        "type": "variable"
+                                    }
+                                ]
+                            },
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_EC7O2M",
+                                    "displayName": "Start",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "current-stage-entered",
+                                                "id": "Rule_iTsaaM"
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "id": "tResp02Pk",
+                            "elementId": "Stage_Resp04-tResp02Pk",
+                            "displayName": "Package Evidence Bundle",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "Compiles all evidence documents into a structured submission package",
+                            "data": {
+                                "agentBinding": "bPrName",
+                                "folderPathBinding": "bPrFldr",
+                                "inputs": [
+                                    {
+                                        "name": "evidence_quality_score",
+                                        "value": "evidenceQualityScore",
+                                        "type": "variable"
+                                    },
+                                    {
+                                        "name": "evidence_summary",
+                                        "value": "evidenceSummary",
+                                        "type": "variable"
+                                    }
+                                ],
+                                "outputs": [
+                                    {
+                                        "name": "win_probability",
+                                        "value": "winProbability",
+                                        "type": "variable"
+                                    }
+                                ]
+                            },
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_t05E1",
+                                    "displayName": "After Draft Rebuttal",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "selected-tasks-completed",
+                                                "id": "Rule_t05R1",
+                                                "selectedTasksIds": [
+                                                    "tResp01Dr"
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "entryConditions": [
+                    {
+                        "id": "Condition_RespE1",
+                        "displayName": "Entry Rule 1",
+                        "isInterrupting": false,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_RespR1",
+                                    "rule": "selected-stage-completed",
+                                    "selectedStageId": "Stage_Strat3"
+                                }
+                            ]
+                        ]
+                    }
+                ],
+                "exitConditions": [
+                    {
+                        "id": "Condition_RespX1",
+                        "displayName": "Complete Rule 1",
+                        "type": "exit-only",
+                        "marksStageComplete": true,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_RespXR",
+                                    "rule": "required-tasks-completed"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "Stage_Humn05",
+            "type": "case-management:Stage",
+            "data": {
+                "label": "Human Review",
+                "description": "Analyst reviews AI-drafted response and approves or requests changes",
+                "isRequired": true,
+                "parentElement": {
+                    "id": "root",
+                    "type": "case-management:root"
+                },
+                "isInvalidDropTarget": false,
+                "isPendingParent": false,
+                "tasks": [
+                    [
+                        {
+                            "id": "tHumn01Rv",
+                            "elementId": "Stage_Humn05-tHumn01Rv",
+                            "displayName": "Review Response Package",
+                            "type": "action",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": false,
+                            "description": "Human analyst reviews the drafted rebuttal letter and evidence package, approves or sends back for revision",
+                            "data": {},
+                            "entryConditions": []
+                        }
+                    ]
+                ],
+                "entryConditions": [
+                    {
+                        "id": "Condition_HumnE1",
+                        "displayName": "Entry Rule 1",
+                        "isInterrupting": false,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_HumnR1",
+                                    "rule": "selected-stage-completed",
+                                    "selectedStageId": "Stage_Resp04"
+                                }
+                            ]
+                        ]
+                    }
+                ],
+                "exitConditions": [
+                    {
+                        "id": "Condition_HumnX1",
+                        "displayName": "Complete Rule 1",
+                        "type": "exit-only",
+                        "marksStageComplete": true,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_HumnXR",
+                                    "rule": "required-tasks-completed"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "Stage_Subm06",
+            "type": "case-management:Stage",
+            "data": {
+                "label": "Submission",
+                "description": "Submit the approved rebuttal to Stripe via the Disputes API",
+                "isRequired": true,
+                "parentElement": {
+                    "id": "root",
+                    "type": "case-management:root"
+                },
+                "isInvalidDropTarget": false,
+                "isPendingParent": false,
+                "tasks": [
+                    [
+                        {
+                            "id": "tSubm01Su",
+                            "elementId": "Stage_Subm06-tSubm01Su",
+                            "displayName": "Submit to Stripe",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "Coded agent submits evidence to Stripe Disputes API and records submission confirmation",
+                            "data": {},
+                            "entryConditions": []
+                        }
+                    ],
+                    [
+                        {
+                            "id": "tSubm02Cf",
+                            "elementId": "Stage_Subm06-tSubm02Cf",
+                            "displayName": "Confirm Submission",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "Verifies submission was accepted by Stripe and logs confirmation details",
+                            "data": {},
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_t06E1",
+                                    "displayName": "After Submit",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "selected-tasks-completed",
+                                                "id": "Rule_t06R1",
+                                                "selectedTasksIds": [
+                                                    "tSubm01Su"
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "entryConditions": [
+                    {
+                        "id": "Condition_SubmE1",
+                        "displayName": "Entry Rule 1",
+                        "isInterrupting": false,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_SubmR1",
+                                    "rule": "selected-stage-completed",
+                                    "selectedStageId": "Stage_Humn05"
+                                }
+                            ]
+                        ]
+                    }
+                ],
+                "exitConditions": [
+                    {
+                        "id": "Condition_SubmX1",
+                        "displayName": "Complete Rule 1",
+                        "type": "exit-only",
+                        "marksStageComplete": true,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_SubmXR",
+                                    "rule": "required-tasks-completed"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "Stage_Outc07",
+            "type": "case-management:Stage",
+            "data": {
+                "label": "Outcome Monitoring",
+                "description": "Monitor dispute resolution and record final win/loss outcome",
+                "isRequired": true,
+                "parentElement": {
+                    "id": "root",
+                    "type": "case-management:root"
+                },
+                "isInvalidDropTarget": false,
+                "isPendingParent": false,
+                "tasks": [
+                    [
+                        {
+                            "id": "tOutc01Mn",
+                            "elementId": "Stage_Outc07-tOutc01Mn",
+                            "displayName": "Monitor Dispute Status",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "Polls Stripe API for dispute status updates and records final outcome",
+                            "data": {},
+                            "entryConditions": []
+                        }
+                    ],
+                    [
+                        {
+                            "id": "tOutc02Cl",
+                            "elementId": "Stage_Outc07-tOutc02Cl",
+                            "displayName": "Close Case",
+                            "type": "agent",
+                            "isRequired": true,
+                            "shouldRunOnlyOnce": true,
+                            "description": "Records final outcome (won/lost), updates WooCommerce order notes, and closes the case",
+                            "data": {},
+                            "entryConditions": [
+                                {
+                                    "id": "Condition_t07E1",
+                                    "displayName": "After Monitor",
+                                    "rules": [
+                                        [
+                                            {
+                                                "rule": "selected-tasks-completed",
+                                                "id": "Rule_t07R1",
+                                                "selectedTasksIds": [
+                                                    "tOutc01Mn"
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "entryConditions": [
+                    {
+                        "id": "Condition_OutcE1",
+                        "displayName": "Entry Rule 1",
+                        "isInterrupting": false,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_OutcR1",
+                                    "rule": "selected-stage-completed",
+                                    "selectedStageId": "Stage_Subm06"
+                                }
+                            ]
+                        ]
+                    }
+                ],
+                "exitConditions": [
+                    {
+                        "id": "Condition_OutcX1",
+                        "displayName": "Complete Rule 1",
+                        "type": "exit-only",
+                        "marksStageComplete": true,
+                        "rules": [
+                            [
+                                {
+                                    "id": "Rule_OutcXR",
+                                    "rule": "required-tasks-completed"
+                                }
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "edges": [],
+    "layout": {}
+}

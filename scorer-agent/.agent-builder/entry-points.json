@@ -1,0 +1,41 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "/content/agent.json",
+      "uniqueId": "5c10b3b9-2266-4667-9c04-2d77a1161106",
+      "type": "agent",
+      "input": {
+        "type": "object",
+        "properties": {
+          "woo_order_json": {
+            "type": "string",
+            "description": "WooCommerce order JSON"
+          },
+          "stripe_dispute_json": {
+            "type": "string",
+            "description": "Stripe dispute JSON"
+          }
+        },
+        "required": [
+          "woo_order_json",
+          "stripe_dispute_json"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "evidence_quality_score": {
+            "type": "number",
+            "description": "Score from 1-100 evaluating the evidence strength"
+          },
+          "evidence_summary": {
+            "type": "string",
+            "description": "A summary of the evidence findings"
+          }
+        }
+      }
+    }
+  ]
+}

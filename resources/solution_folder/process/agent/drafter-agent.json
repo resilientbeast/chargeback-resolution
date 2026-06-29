@@ -1,0 +1,38 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "drafter-agent",
+    "kind": "process",
+    "type": "agent",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "cba06bd8-4478-4ce9-a652-239e22e4879a",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "drafter-agent"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Agent",
+      "name": "drafter-agent",
+      "package": {
+        "key": "66e12ee8-d409-42d1-af15-f0170aa75de1"
+      },
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "0742e4d5-37e3-4dd0-9822-7598a91151f4",
+    "files": []
+  }
+}

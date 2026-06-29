@@ -1,0 +1,39 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "stripe-evidence-agent",
+    "kind": "process",
+    "type": "agent",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "e72f5b17-96ab-421d-90c2-3bbecbd5d917",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "stripe-evidence-agent"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Agent",
+      "name": "stripe-evidence-agent",
+      "package": {
+        "key": "09b07906-a676-416f-a58c-8738bc7d6f04"
+      },
+      "packageName": "chargeback-solution.agent.stripe-evidence-agent",
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "ba3d0a6f-0b6a-450f-b838-ea8013d35a0f",
+    "files": []
+  }
+}

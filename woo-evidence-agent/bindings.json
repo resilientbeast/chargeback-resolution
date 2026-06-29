@@ -1,0 +1,59 @@
+{
+  "version": "2.0",
+  "resources": [
+    {
+      "resource": "asset",
+      "key": "WooCommerce_ConsumerKey.Shared",
+      "value": {
+        "name": {
+          "defaultValue": "WooCommerce_ConsumerKey",
+          "isExpression": false,
+          "displayName": "Name"
+        },
+        "folderPath": {
+          "defaultValue": "Shared",
+          "isExpression": false,
+          "displayName": "Folder Path"
+        },
+        "EntryPointUniqueId": {
+          "defaultValue": "main",
+          "isExpression": false,
+          "displayName": "main.py"
+        }
+      },
+      "metadata": {
+        "ActivityName": "retrieve_async",
+        "BindingsVersion": "2.2",
+        "DisplayLabel": "FullName",
+        "SubType": "stringAsset"
+      }
+    },
+    {
+      "resource": "asset",
+      "key": "WooCommerce_ConsumerSecret.Shared",
+      "value": {
+        "name": {
+          "defaultValue": "WooCommerce_ConsumerSecret",
+          "isExpression": false,
+          "displayName": "Name"
+        },
+        "folderPath": {
+          "defaultValue": "Shared",
+          "isExpression": false,
+          "displayName": "Folder Path"
+        },
+        "EntryPointUniqueId": {
+          "defaultValue": "main",
+          "isExpression": false,
+          "displayName": "main.py"
+        }
+      },
+      "metadata": {
+        "ActivityName": "retrieve_async",
+        "BindingsVersion": "2.2",
+        "DisplayLabel": "FullName",
+        "SubType": "stringAsset"
+      }
+    }
+  ]
+}

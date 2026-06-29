@@ -1,0 +1,39 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "scorer-agent",
+    "kind": "process",
+    "type": "agent",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "cc3f6c12-1778-413e-8595-9e59d612956b",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "scorer-agent"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Agent",
+      "name": "scorer-agent",
+      "package": {
+        "key": "5d242f0c-b944-444d-a10a-a10dc65d4b89"
+      },
+      "packageName": "chargeback-solution.agent.scorer-agent",
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "3cdec616-357e-46c7-9de3-56ddf257488a",
+    "files": []
+  }
+}

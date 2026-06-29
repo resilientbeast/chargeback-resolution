@@ -1,0 +1,23 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "probability-agent",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "5ecc7484-b814-41b7-9299-eed1a4ee0ab7",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "probability-agent"
+    },
+    "locks": [],
+    "key": "528fd1c0-03ca-4c5f-b087-1f2a468c8c6e",
+    "files": []
+  }
+}

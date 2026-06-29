@@ -1,0 +1,139 @@
+{
+  "case": {
+    "completionConditions": [
+      {
+        "completionConditionType": "StagesCompleted",
+        "parameters": {
+          "stageNames": [
+            "Intake",
+            "Evidence Gathering",
+            "Strategy",
+            "Response Drafting",
+            "Human Review",
+            "Submission",
+            "Outcome Monitoring"
+          ]
+        },
+        "ruleName": "Complete Rule 1"
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "Intake",
+      "entryConditions": [
+        {
+          "entryConditionType": "CaseEntered",
+          "parameters": {},
+          "ruleName": "Entry Rule 1"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [],
+      "tasks": []
+    },
+    {
+      "name": "Evidence Gathering",
+      "entryConditions": [
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Intake"
+            ]
+          },
+          "ruleName": "Entry Rule 1"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [],
+      "tasks": []
+    },
+    {
+      "name": "Strategy",
+      "entryConditions": [
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Evidence Gathering"
+            ]
+          },
+          "ruleName": "Entry Rule 1"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [],
+      "tasks": []
+    },
+    {
+      "name": "Response Drafting",
+      "entryConditions": [
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Strategy"
+            ]
+          },
+          "ruleName": "Entry Rule 1"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [],
+      "tasks": []
+    },
+    {
+      "name": "Human Review",
+      "entryConditions": [
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Response Drafting"
+            ]
+          },
+          "ruleName": "Entry Rule 1"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [],
+      "tasks": []
+    },
+    {
+      "name": "Submission",
+      "entryConditions": [
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Human Review"
+            ]
+          },
+          "ruleName": "Entry Rule 1"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [],
+      "tasks": []
+    },
+    {
+      "name": "Outcome Monitoring",
+      "entryConditions": [
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Submission"
+            ]
+          },
+          "ruleName": "Entry Rule 1"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [],
+      "tasks": []
+    }
+  ],
+  "version": 1
+}

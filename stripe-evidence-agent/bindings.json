@@ -1,0 +1,32 @@
+{
+  "version": "2.0",
+  "resources": [
+    {
+      "resource": "asset",
+      "key": "Stripe_SecretKey.Shared",
+      "value": {
+        "name": {
+          "defaultValue": "Stripe_SecretKey",
+          "isExpression": false,
+          "displayName": "Name"
+        },
+        "folderPath": {
+          "defaultValue": "Shared",
+          "isExpression": false,
+          "displayName": "Folder Path"
+        },
+        "EntryPointUniqueId": {
+          "defaultValue": "main",
+          "isExpression": false,
+          "displayName": "main.py"
+        }
+      },
+      "metadata": {
+        "ActivityName": "retrieve_credential_async",
+        "BindingsVersion": "2.2",
+        "DisplayLabel": "FullName",
+        "SubType": "credentialAsset"
+      }
+    }
+  ]
+}

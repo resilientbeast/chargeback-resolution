@@ -1,0 +1,23 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "drafter-agent",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "cba06bd8-4478-4ce9-a652-239e22e4879a",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "drafter-agent"
+    },
+    "locks": [],
+    "key": "66e12ee8-d409-42d1-af15-f0170aa75de1",
+    "files": []
+  }
+}

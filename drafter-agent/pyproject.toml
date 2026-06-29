@@ -1,0 +1,15 @@
+[project]
+name = "drafter-agent"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "langgraph>=1.2.6",
+    "uipath>=2.11.13",
+    "uipath-langchain>=0.13.11",
+]
+
+[dependency-groups]
+dev = [
+    "uipath-dev>=0.0.81",
+]

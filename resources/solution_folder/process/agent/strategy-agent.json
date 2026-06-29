@@ -1,0 +1,38 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "strategy-agent",
+    "kind": "process",
+    "type": "agent",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "d9744585-e7e5-4e25-99c5-1b4fe4a1f518",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "kind": "package",
+        "name": "strategy-agent"
+      }
+    ],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Agent",
+      "name": "strategy-agent",
+      "package": {
+        "key": "5b52c402-d42e-401a-972e-9ed11b7eea37"
+      },
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180
+    },
+    "locks": [],
+    "key": "d24e9410-1988-4994-8c94-3e392310990c",
+    "files": []
+  }
+}

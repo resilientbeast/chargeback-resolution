@@ -1,0 +1,45 @@
+{
+    "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id": "entry-points.json",
+    "entryPoints": [
+        {
+            "filePath": "main",
+            "uniqueId": "0b3a9ffb-f6ee-4c4f-ad53-d14fb3e0b0a1",
+            "type": "function",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "evidence_quality_score": {
+                        "type": "number"
+                    },
+                    "evidence_summary": {
+                        "type": "string"
+                    }
+                },
+                "required": []
+            },
+            "output": {
+                "type": "object",
+                "properties": {
+                    "win_probability": {
+                        "type": "number"
+                    }
+                },
+                "required": []
+            },
+            "graph": {
+                "nodes": [
+                    {
+                        "id": "main.py:21",
+                        "name": "calculate_probability",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    }
+                ],
+                "edges": []
+            }
+        }
+    ]
+}

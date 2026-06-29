@@ -1,0 +1,61 @@
+{
+    "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id": "entry-points.json",
+    "entryPoints": [
+        {
+            "filePath": "main",
+            "uniqueId": "54f8ac89-dfb4-4cc6-a7f6-080e4abd2738",
+            "type": "function",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "dispute_id": {
+                        "type": "string"
+                    }
+                },
+                "required": []
+            },
+            "output": {
+                "type": "object",
+                "properties": {
+                    "dispute_data_json": {
+                        "type": "string"
+                    },
+                    "error_type": {
+                        "type": "string"
+                    },
+                    "error_message": {
+                        "type": "string"
+                    }
+                },
+                "required": []
+            },
+            "graph": {
+                "nodes": [
+                    {
+                        "id": "main.py:49",
+                        "name": "fetch_stripe_charge",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    },
+                    {
+                        "id": "main.py:25",
+                        "name": "sdk",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "main.py:49",
+                        "target": "main.py:25"
+                    }
+                ]
+            }
+        }
+    ]
+}

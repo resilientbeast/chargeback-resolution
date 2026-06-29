@@ -1,0 +1,20 @@
+[tool.uipath]
+type = "agent"
+
+[project]
+name = "probability-agent"
+version = "0.0.1"
+description = "probability-agent"
+authors = [{ name = "John Doe", email = "john.doe@myemail.com" }]
+dependencies = [
+    "uipath>=2.10.0, <2.11.0",
+    "uipath-core>=0.5.23",
+    "langgraph>=0.2.66",
+    "pydantic>=2.9.2",
+]
+requires-python = ">=3.11"
+
+[dependency-groups]
+dev = [
+    "uipath-dev>=0.0.79",
+]

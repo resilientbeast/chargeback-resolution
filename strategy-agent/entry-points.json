@@ -1,0 +1,104 @@
+{
+    "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id": "entry-points.json",
+    "entryPoints": [
+        {
+            "filePath": "agent",
+            "uniqueId": "631897e1-1660-4b93-9887-3289eb079a0b",
+            "type": "agent",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "woo_order_json": {
+                        "description": "WooCommerce order details JSON",
+                        "title": "Woo Order Json",
+                        "type": "string"
+                    },
+                    "stripe_dispute_json": {
+                        "description": "Stripe dispute details JSON",
+                        "title": "Stripe Dispute Json",
+                        "type": "string"
+                    },
+                    "evidence_quality_score": {
+                        "description": "Score from 1-100",
+                        "title": "Evidence Quality Score",
+                        "type": "number"
+                    },
+                    "evidence_summary": {
+                        "description": "Summary of evidence",
+                        "title": "Evidence Summary",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "woo_order_json",
+                    "stripe_dispute_json",
+                    "evidence_quality_score",
+                    "evidence_summary"
+                ]
+            },
+            "output": {
+                "type": "object",
+                "properties": {
+                    "strategy_recommendation": {
+                        "description": "The recommended dispute strategy",
+                        "title": "Strategy Recommendation",
+                        "type": "string"
+                    },
+                    "confidence_level": {
+                        "description": "Confidence level: High, Medium, or Low",
+                        "title": "Confidence Level",
+                        "type": "string"
+                    },
+                    "requires_human_review": {
+                        "description": "True if human review is needed",
+                        "title": "Requires Human Review",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "strategy_recommendation",
+                    "confidence_level",
+                    "requires_human_review"
+                ]
+            },
+            "graph": {
+                "nodes": [
+                    {
+                        "id": "__start__",
+                        "name": "__start__",
+                        "type": "__start__",
+                        "subgraph": null,
+                        "metadata": {}
+                    },
+                    {
+                        "id": "determine_strategy",
+                        "name": "determine_strategy",
+                        "type": "node",
+                        "subgraph": null,
+                        "metadata": {}
+                    },
+                    {
+                        "id": "__end__",
+                        "name": "__end__",
+                        "type": "__end__",
+                        "subgraph": null,
+                        "metadata": {}
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "__start__",
+                        "target": "determine_strategy",
+                        "label": null
+                    },
+                    {
+                        "source": "determine_strategy",
+                        "target": "__end__",
+                        "label": null
+                    }
+                ]
+            }
+        }
+    ]
+}

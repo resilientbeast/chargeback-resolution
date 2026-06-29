@@ -1,0 +1,23 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "strategy-agent",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "d9744585-e7e5-4e25-99c5-1b4fe4a1f518",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "strategy-agent"
+    },
+    "locks": [],
+    "key": "5b52c402-d42e-401a-972e-9ed11b7eea37",
+    "files": []
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "chargeback-resolution",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "69c52a76-f721-4b37-b563-16e699d9ddb4",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "name": "chargeback-resolution"
+    },
+    "locks": [],
+    "key": "e62561a1-92ba-43bd-80e2-5c60e2a3d406",
+    "files": []
+  }
+}
